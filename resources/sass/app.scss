@@ -1,0 +1,66 @@
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// Font awesome
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+input[type='range'] {
+  width: 100%;
+}
+datalist {
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-goal{
+  .card-header{
+      .card-title{
+        float: left;
+        margin-bottom: 0;
+      }
+      .close{
+        float: right;
+      }
+  }
+  .card-body{
+    .card-title{
+      width: 50%;
+      float: left;
+    }
+  }
+  .consequence-list, .step-list{
+    list-style-type: none;
+    padding-left: 0;
+    li{
+      div{
+        float: right;
+        form{
+          display: inline-block;
+        }
+      }
+    }
+  }
+  .tab-steps .tab-body
+  //.tab-consequences .tab-body
+  {
+    display: none;
+  }
+}
