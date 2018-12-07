@@ -3,6 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+      <svg id="vis"></svg>
         <div class="col-md-12">
             <div class="main">
 
@@ -13,7 +14,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <ul>
+                    <!-- <ul>
                         @foreach ($goals as $goal)
                             <li>
                               <a href="/goal/{{ $goal->id }}/edit">{{ $goal->title }}</a> <span>{{ $goal->value() }}</span>
@@ -28,7 +29,7 @@
 
                             </li>
                         @endforeach
-                    </ul>
+                    </ul> -->
 
                 </div>
             </div>

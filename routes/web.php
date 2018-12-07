@@ -20,8 +20,6 @@ Route::get('/', function ()
 
 Route::middleware('auth')->group(function () {
 
-    Route::get('/home', 'HomeController@index')->name('home');
-
     Route::get('/goals', 'GoalController@index');
 
     Route::resource('/goal', 'GoalController');
@@ -30,7 +28,13 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('/step', 'stepController');
 
-    Route::get('/goalsapi', 'GoalController@json');
+    Route::get('/goalsapi', 'GoalController@jsonGoals');
+
+    Route::get('/consequenceapi/{id}', 'GoalController@jsonConsequences');
+
+    Route::get('/stepapi/{id}', 'GoalController@jsonSteps');
+
+    Route::get('/home', 'HomeController@index')->name('home');
 
 });
 //

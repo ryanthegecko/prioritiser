@@ -127,17 +127,43 @@ class GoalController extends Controller
         //
     }
 
-        /**
-         * Json view
-         *
-         * @param  \App\Goal  $goal
-         * @return \Illuminate\Http\Response
-         */
-        public function json(Goal $goal)
-        {
-            $user = Auth::user();
-            return $user->goals;
-        }
+    /**
+     * Json view
+     *
+     * @param  \App\Goal  $goal
+     * @return \Illuminate\Http\Response
+     */
+    public function jsonGoals(Goal $goal)
+    {
+        $user = Auth::user();
+        return $user->goals;
+    }
+
+    /**
+     * Json view
+     *
+     * @param  \App\Goal  $goal
+     * @return \Illuminate\Http\Response
+     */
+    public function jsonConsequences($goal)
+    {
+        $user = Auth::user();
+        $consequences = Consequence::where('goal_id',$goal)->get();
+        return $consequences;
+    }
+
+    /**
+     * Json view
+     *
+     * @param  \App\Goal  $goal
+     * @return \Illuminate\Http\Response
+     */
+    public function jsonSteps($goal)
+    {
+        $user = Auth::user();
+        $steps = Step::where('goal_id',$goal)->get();
+        return $steps;
+    }
 
 
 }

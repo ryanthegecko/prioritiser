@@ -12,9 +12,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
-    <!--script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script-->
-    <!--script src="https://d3js.org/d3.v4.min.js"></script-->
-    <script src="https://d3js.org/d3-hierarchy.v1.min.js"></script>
+    <script src="https://d3plus.org/js/d3plus-text.v0.9.full.min.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -89,8 +87,6 @@
         <main class="py-4">
             @yield('content')
         </main>
-        <svg id="vis">
-        </svg>
     </div>
 
     <div class="modal fade" id="new-goal-modal">

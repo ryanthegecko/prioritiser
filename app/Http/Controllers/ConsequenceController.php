@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Consequence;
+use App\Goal;
 use Illuminate\Http\Request;
+use Auth;
 
 class ConsequenceController extends Controller
 {
