@@ -59,7 +59,7 @@ class GoalController extends Controller
       $goal = new Goal;
       $goal->user_id = $user->id;
       $goal->title = request('title');
-      $goal->value = 0;
+      //$goal->value = 0;
       $goal->completed = false;
 
       $goal->save();
@@ -88,10 +88,11 @@ class GoalController extends Controller
      */
     public function edit(Goal $goal)
     {
+
         $consequences = Consequence::where('goal_id',$goal->id)->get();
 
         $steps = Step::where('goal_id',$goal->id)->get();
-
+        //dd($steps);
         return view('goals.edit', ['goal' => $goal, 'consequences' => $consequences, 'steps' => $steps]);
     }
 
@@ -104,10 +105,7 @@ class GoalController extends Controller
      */
     public function update(Request $request, Goal $goal)
     {
-        //dd(request()->all());
-
         $goal->title = request('title');
-        $goal->value = request('value');
         $goal->save();
 
         $goals = UsersGoals::where('user_id, $user->id');
@@ -136,7 +134,11 @@ class GoalController extends Controller
     public function jsonGoals(Goal $goal)
     {
         $user = Auth::user();
-        return $user->goals;
+        $goals = $user->goals;
+        foreach ($user->goals as $goal) {
+          $goal['value'] = $goal->value();
+        }
+        return $goals;
     }
 
     /**

@@ -12,8 +12,6 @@ class Goal extends Model
 
         'title',
 
-        'value',
-
         'shelf_id',
 
         'completed',
@@ -41,9 +39,7 @@ class Goal extends Model
       foreach ($this->consequences as $consequence) {
         $goal_value += $consequence->value;
       }
-
       return $goal_value;
-
     }
 
 

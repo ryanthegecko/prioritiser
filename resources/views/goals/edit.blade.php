@@ -27,7 +27,6 @@
                             <label for="title">Title</label>
 
                             <input class="form-control" type="text" name="title" placeholder="Title" value="{{ $goal->title }}"/>
-                            <input class="form-control" type="hidden" name="value" disabled value="{{ $goal->value }}"/>
 
                         </div>
 
@@ -41,10 +40,10 @@
 
                     <div class="row">
                         <div class="col-6">
-                            <h5 class="card-title">Steps</h5>
+                            <h5 class="card-title steps">Steps</h5>
                         </div>
                         <div class="col-6">
-                            <h5 class="card-title">Consequences</h5>
+                            <h5 class="card-title consequences">Consequences</h5>
                         </div>
                         <div class="col-12 tab tab-steps">
 
@@ -95,14 +94,14 @@
                                     </div>
 
                                     <div class="control">
-                                        <label for="sector">Consequence deadline</label>
+                                        <label for="sector">Step deadline</label>
                                         <div class="control">
                                             <input type="date" id="deadline" name="deadline">
                                         </div>
                                     </div>
                                     <br />
                                     <div class="control">
-                                        <label for="value">Consequence time value</label>
+                                        <label for="value">Step time value</label>
                                         <input type="range" name="time_value" list="tickmarks" min="1" max="4" value="0" step="1">
 
                                         <datalist id="tickmarks">
@@ -127,7 +126,7 @@
                                         @foreach ($consequences as $consequence)
                                         <li>
                                           <hr />
-                                          {{ $consequence->title }}
+                                          {{ $consequence->title }} {{ $consequence->value }}
                                             <div>
                                                 <button
                                                     class="edit-consequence-modal"

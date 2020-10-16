@@ -60,136 +60,18 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 10);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(1);
-module.exports = __webpack_require__(2);
-
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
-__webpack_require__(28);
-
-$(document).ready(function () {
-  $(document).on("click", ".edit-goal .close", function () {
-    window.location.replace('/goals');
-  });
-
-  var vWidth = $(".container").innerWidth();
-  var vHeight = $(window).innerHeight() * 0.85;
-
-  function getWidthsByCount(count) {
-    var width = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : vWidth;
-
-    return width / count;
-  };
-
-  d3.json("/goalsapi").then(function (data) {
-    console.log(data);
-    var group = d3.select("#vis").attr('width', vWidth).attr('height', vHeight).selectAll("g").data(data);
-
-    var widthByCount = getWidthsByCount(data.length);
-
-    group.enter().append("g").append("circle").attr("cx", function (d, i) {
-      return widthByCount * i + widthByCount / 2;
-    }).attr("cy", 200).attr("r", 75).attr("id", function (d, i) {
-      return d.id;
-    }).attr("fill", "#fff").attr("stroke", "#000");
-
-    d3.selectAll('g').append('text').attr('class', 'wrap-me').attr("x", function (d, i) {
-      return widthByCount * i + 10;
-    }).attr("y", 200).style("fill", "red").style("font-size", "10px").text(function (d, i) {
-      return d.title;
-    });
-
-    new d3plus.TextBox().select('g').data(data).fontSize(16).width(200).x(function (d, i) {
-      return i * 250;
-    }).render();
-
-    var simulation = d3.forceSimulation(data).force('charge', d3.forceManyBody()).force('center', d3.forceCenter(vWidth / 2, vHeight / 2))
-    // .force('collision', d3.forceCollide().radius(function(d) {
-    //   console.log(d);
-    //   return getWidthsByCount(data.length)/4
-    // }))
-    .force('collision', d3.forceCollide().radius(50)).on('tick', ticked);
-
-    function ticked() {
-      var u = d3.select('svg').selectAll('circle').data(data);
-
-      u.enter().append('circle').attr('r', 5).merge(u).attr('cx', function (d) {
-        return d.x;
-      }).attr('cy', function (d) {
-        return d.y;
-      });
-
-      u.exit().remove();
-
-      var v = d3.select('svg').selectAll('text').data(data);
-
-      v.enter()
-      //.append('text')
-      .append(function (d, i) {
-        var text = new d3plus.TextBox().fontSize(16).width(50).text(function (d) {
-          return d;
-        }).x(function (d, i) {
-          return i * 250;
-        }).render();
-        return document.createElement('text');
-      }).attr('r', 5).merge(v).attr('x', function (d) {
-        return d.x - 30;
-      }).attr('y', function (d) {
-        return d.y;
-      });
-
-      u.exit().remove();
-    }
-  });
-});
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 3 */,
-/* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */,
-/* 11 */,
-/* 12 */,
-/* 13 */,
-/* 14 */,
-/* 15 */,
-/* 16 */,
-/* 17 */,
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
 
 
-var bind = __webpack_require__(23);
-var isBuffer = __webpack_require__(34);
+var bind = __webpack_require__(5);
+var isBuffer = __webpack_require__(18);
 
 /*global toString:true*/
 
@@ -492,14 +374,14 @@ module.exports = {
 
 
 /***/ }),
-/* 19 */
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
-var utils = __webpack_require__(18);
-var normalizeHeaderName = __webpack_require__(37);
+var utils = __webpack_require__(0);
+var normalizeHeaderName = __webpack_require__(21);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -515,10 +397,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(24);
+    adapter = __webpack_require__(6);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(24);
+    adapter = __webpack_require__(6);
   }
   return adapter;
 }
@@ -593,10 +475,10 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(36)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)))
 
 /***/ }),
-/* 20 */
+/* 2 */
 /***/ (function(module, exports) {
 
 var g;
@@ -623,7 +505,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 21 */
+/* 3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3163,10 +3045,10 @@ Popper.Defaults = Defaults;
 /* harmony default export */ __webpack_exports__["default"] = (Popper);
 //# sourceMappingURL=popper.js.map
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(20)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2)))
 
 /***/ }),
-/* 22 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -13537,7 +13419,7 @@ return jQuery;
 
 
 /***/ }),
-/* 23 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13555,19 +13437,19 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 24 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(18);
-var settle = __webpack_require__(38);
-var buildURL = __webpack_require__(40);
-var parseHeaders = __webpack_require__(41);
-var isURLSameOrigin = __webpack_require__(42);
-var createError = __webpack_require__(25);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(43);
+var utils = __webpack_require__(0);
+var settle = __webpack_require__(22);
+var buildURL = __webpack_require__(24);
+var parseHeaders = __webpack_require__(25);
+var isURLSameOrigin = __webpack_require__(26);
+var createError = __webpack_require__(7);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(27);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -13664,7 +13546,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(44);
+      var cookies = __webpack_require__(28);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -13742,13 +13624,13 @@ module.exports = function xhrAdapter(config) {
 
 
 /***/ }),
-/* 25 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var enhanceError = __webpack_require__(39);
+var enhanceError = __webpack_require__(23);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -13767,7 +13649,7 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
-/* 26 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13779,7 +13661,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 27 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13805,11 +13687,169 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 28 */
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(11);
+module.exports = __webpack_require__(36);
+
+
+/***/ }),
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-window._ = __webpack_require__(29);
+/**
+ * First we will load all of this project's JavaScript dependencies which
+ * includes Vue and other libraries. It is a great starting point when
+ * building robust, powerful web applications using Vue and Laravel.
+ */
+
+__webpack_require__(12);
+
+$(document).ready(function () {
+
+  var vWidth = $(".container").innerWidth();
+  var vHeight = $(window).innerHeight() * 0.85;
+  function getWidthsByCount(count) {
+    var width = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : vWidth;
+
+    return width / count;
+  };
+
+  $(document).on("click", ".edit-goal .close", function () {
+    window.location.replace('/goals');
+  });
+
+  $(document).on("click", ".card-title", function () {
+    if ($(this).is('.steps')) {
+      //alert();
+      $('.tab-steps').fadeIn();
+      $('.tab-consequences').hide();
+    } else {
+      $('.tab-consequences').fadeIn();
+      $('.tab-steps').hide();
+    }
+  });
+
+  $(document).on("click", "circle", function () {
+    var id = $(this).attr('id');
+    //var url = "/stepapi/"+id;
+    window.location.replace("/goal/" + id + "/edit");
+
+    //console.log(url);
+    // d3.json(url).then(function(data){
+    //   console.log(data);
+    //   var widthByCount = getWidthsByCount(data.length);
+    //
+    //   d3.select("circle[data-goalid='goal"+id+"']")
+
+    // Apply the general update pattern to the nodes.
+    // var node = data.data(data, function(d) { return d.id;});
+    // node.exit().remove();
+    // node = node.enter().append("circle").attr("fill", function(d) { return color(d.id); }).attr("r", 8).merge(node);
+    // //.attr("fill", "#131")
+
+    //$("circle[data-goalid='goal"+id+"']").attr('fill', '#131');
+    //
+    //d3.selectAll('g')
+    // .append('text')
+    // .attr('class', 'wrap-me')
+    // .attr("x", function(d, i){ return (widthByCount * i) +10 })
+    // .attr("y", 200 )
+    // .style("fill","red")
+    // .style("font-size","10px")
+    // .text(function(d, i) { return d.title; })
+
+
+    //})
+  });
+
+  d3.json("/goalsapi").then(function (data) {
+    //console.log(data);
+    var group = d3.select("#vis").attr('width', vWidth).attr('height', vHeight).selectAll("g").data(data);
+
+    var widthByCount = getWidthsByCount(data.length);
+
+    group.enter().append("g").append("circle").attr("cx", function (d, i) {
+      return widthByCount * i + widthByCount / 2;
+    }).attr("cy", 200).attr("r", function (d, i) {
+      return (d.value + 1) * 10;
+    }).attr("id", function (d, i) {
+      return d.id;
+    }).attr("data-goalid", function (d, i) {
+      return 'goal' + d.id;
+    }).attr("fill", "#fff").attr("stroke", "#000");
+
+    d3.selectAll('g').append('text').attr('class', 'wrap-me').attr("x", function (d, i) {
+      return widthByCount * i + 10;
+    }).attr("y", 200).style("fill", "red").style("font-size", "10px").text(function (d, i) {
+      return d.title + ' ' + d.value;
+    });
+
+    new d3plus.TextBox().select('g').data(data).fontSize(16).width(200).x(function (d, i) {
+      return i * 250;
+    }).render();
+
+    var simulation = d3.forceSimulation(data).force('charge', d3.forceManyBody()).force('center', d3.forceCenter(vWidth / 2, vHeight / 2))
+    // .force('center', function(d) {
+    //   console.log( d.value );
+    //   return d.value
+    // })
+
+    .force('collision', d3.forceCollide().radius(function (d) {
+      return (d.value + 1) * 10;
+    })).on('tick', ticked);
+
+    function ticked() {
+      var u = d3.select('svg').selectAll('circle').data(data);
+
+      u.enter().append('circle').attr('r', function (d) {
+        return (d.value + 1) * 30;
+      }).merge(u).attr('cx', function (d) {
+        //console.log(d)
+        return d.x;
+      }).attr('cy', function (d) {
+        return d.y;
+        //- (d.value * 25)
+      });
+
+      u.exit().remove();
+
+      var v = d3.select('svg').selectAll('text').data(data);
+
+      v.enter()
+      //.append('text')
+      // .append(function(d,i) {
+      //     var text = new d3plus.TextBox()
+      //       .fontSize(16)
+      //       .width(50)
+      //       .text(function(d) {
+      //         return d;
+      //       })
+      //       .x(function(d, i) { return i * 250; })
+      //       .render();
+      //       return document.createElement('text');
+      // })
+
+      .attr('r', 5).merge(v).attr('x', function (d) {
+        return d.x - 30;
+      }).attr('y', function (d) {
+        return d.y;
+        //- (d.value * 25)
+      });
+
+      u.exit().remove();
+    }
+  });
+});
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+window._ = __webpack_require__(13);
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -13818,10 +13858,10 @@ window._ = __webpack_require__(29);
  */
 
 try {
-  window.Popper = __webpack_require__(21).default;
-  window.$ = window.jQuery = __webpack_require__(22);
+  window.Popper = __webpack_require__(3).default;
+  window.$ = window.jQuery = __webpack_require__(4);
 
-  __webpack_require__(31);
+  __webpack_require__(15);
 } catch (e) {}
 
 /**
@@ -13830,7 +13870,7 @@ try {
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = __webpack_require__(32);
+window.axios = __webpack_require__(16);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -13866,7 +13906,7 @@ if (token) {
 // });
 
 /***/ }),
-/* 29 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -30978,10 +31018,10 @@ if (token) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20), __webpack_require__(30)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(14)(module)))
 
 /***/ }),
-/* 30 */
+/* 14 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -31009,7 +31049,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 31 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -31018,7 +31058,7 @@ module.exports = function(module) {
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
 (function (global, factory) {
-   true ? factory(exports, __webpack_require__(22), __webpack_require__(21)) :
+   true ? factory(exports, __webpack_require__(4), __webpack_require__(3)) :
   typeof define === 'function' && define.amd ? define(['exports', 'jquery', 'popper.js'], factory) :
   (factory((global.bootstrap = {}),global.jQuery,global.Popper));
 }(this, (function (exports,$,Popper) { 'use strict';
@@ -34959,22 +34999,22 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 32 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(33);
+module.exports = __webpack_require__(17);
 
 /***/ }),
-/* 33 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(18);
-var bind = __webpack_require__(23);
-var Axios = __webpack_require__(35);
-var defaults = __webpack_require__(19);
+var utils = __webpack_require__(0);
+var bind = __webpack_require__(5);
+var Axios = __webpack_require__(19);
+var defaults = __webpack_require__(1);
 
 /**
  * Create an instance of Axios
@@ -35007,15 +35047,15 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(27);
-axios.CancelToken = __webpack_require__(50);
-axios.isCancel = __webpack_require__(26);
+axios.Cancel = __webpack_require__(9);
+axios.CancelToken = __webpack_require__(34);
+axios.isCancel = __webpack_require__(8);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(51);
+axios.spread = __webpack_require__(35);
 
 module.exports = axios;
 
@@ -35024,7 +35064,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 34 */
+/* 18 */
 /***/ (function(module, exports) {
 
 /*!
@@ -35051,16 +35091,16 @@ function isSlowBuffer (obj) {
 
 
 /***/ }),
-/* 35 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var defaults = __webpack_require__(19);
-var utils = __webpack_require__(18);
-var InterceptorManager = __webpack_require__(45);
-var dispatchRequest = __webpack_require__(46);
+var defaults = __webpack_require__(1);
+var utils = __webpack_require__(0);
+var InterceptorManager = __webpack_require__(29);
+var dispatchRequest = __webpack_require__(30);
 
 /**
  * Create a new instance of Axios
@@ -35137,7 +35177,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 36 */
+/* 20 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -35327,13 +35367,13 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 37 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(18);
+var utils = __webpack_require__(0);
 
 module.exports = function normalizeHeaderName(headers, normalizedName) {
   utils.forEach(headers, function processHeader(value, name) {
@@ -35346,13 +35386,13 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 38 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var createError = __webpack_require__(25);
+var createError = __webpack_require__(7);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -35379,7 +35419,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 39 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35407,13 +35447,13 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 
 /***/ }),
-/* 40 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(18);
+var utils = __webpack_require__(0);
 
 function encode(val) {
   return encodeURIComponent(val).
@@ -35480,13 +35520,13 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 
 /***/ }),
-/* 41 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(18);
+var utils = __webpack_require__(0);
 
 // Headers whose duplicates are ignored by node
 // c.f. https://nodejs.org/api/http.html#http_message_headers
@@ -35540,13 +35580,13 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 42 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(18);
+var utils = __webpack_require__(0);
 
 module.exports = (
   utils.isStandardBrowserEnv() ?
@@ -35615,7 +35655,7 @@ module.exports = (
 
 
 /***/ }),
-/* 43 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35658,13 +35698,13 @@ module.exports = btoa;
 
 
 /***/ }),
-/* 44 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(18);
+var utils = __webpack_require__(0);
 
 module.exports = (
   utils.isStandardBrowserEnv() ?
@@ -35718,13 +35758,13 @@ module.exports = (
 
 
 /***/ }),
-/* 45 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(18);
+var utils = __webpack_require__(0);
 
 function InterceptorManager() {
   this.handlers = [];
@@ -35777,18 +35817,18 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 46 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(18);
-var transformData = __webpack_require__(47);
-var isCancel = __webpack_require__(26);
-var defaults = __webpack_require__(19);
-var isAbsoluteURL = __webpack_require__(48);
-var combineURLs = __webpack_require__(49);
+var utils = __webpack_require__(0);
+var transformData = __webpack_require__(31);
+var isCancel = __webpack_require__(8);
+var defaults = __webpack_require__(1);
+var isAbsoluteURL = __webpack_require__(32);
+var combineURLs = __webpack_require__(33);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -35870,13 +35910,13 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 47 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(18);
+var utils = __webpack_require__(0);
 
 /**
  * Transform the data for a request or a response
@@ -35897,7 +35937,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 48 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35918,7 +35958,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 49 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35939,13 +35979,13 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 50 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var Cancel = __webpack_require__(27);
+var Cancel = __webpack_require__(9);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -36003,7 +36043,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 51 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36035,6 +36075,12 @@ module.exports = function spread(callback) {
   };
 };
 
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
